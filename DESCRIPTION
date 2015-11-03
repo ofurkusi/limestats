@@ -6,4 +6,8 @@ Date: 2015-10-29
 Author: Palmar Thorsteinsson <palmar.thorsteinsson@gmail.com>
 Maintainer: Palmar Thorsteinsson <palmar.thorsteinsson@gmail.com>
 Description: 
-License: GPL-2
+License: GPL-3
+Imports:
+    xtable,
+    stringr,
+    Hmisc

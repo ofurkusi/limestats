@@ -1,0 +1,4 @@
+import(xtable)
+import(stringr)
+import(Hmisc)
+exportPattern("^[[:alpha:]]+")
