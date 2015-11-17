@@ -10,11 +10,12 @@ describeCategorical <- function(data, digits = 1, latex=TRUE, caption="", label=
   }
   
   # Text labels
-  txtValid   <- "Gild svör"
-  txtInvalid <- "Ógild svör"
-  txtAll     <- "Alls"
-  txtSum     <- "Samtals"
-  txtNA      <- "Ekkert valið"
+  txtValid   <- gettext("Valid answers", domain="R-limestats")
+  txtInvalid <- gettext("Invalid answers", domain="R-limestats")
+  txtAll     <- gettext("All answers", domain="R-limestats")
+  txtSum     <- gettext("Total", domain="R-limestats")
+  txtNA      <- gettext("No answer", domain="R-limestats")
+  txtOption  <- gettext("Option", domain="R-limestats")
 
   showNA     <- TRUE
   emptyCell  <- NA
@@ -79,7 +80,12 @@ describeCategorical <- function(data, digits = 1, latex=TRUE, caption="", label=
   
   if (latex==TRUE) {
     colNames <- colnames(stats)
-    colnames(stats) <- c("", "\\textrm{Valkostur}", "$\\mathrm{n}$", "$\\mathrm{\\%}$", "$\\mathrm{\\%}$", "$\\mathrm{\\sum \\%}$")
+    colnames(stats) <- c("",
+                         paste("\\textrm{", txtOption, "}", sep=""),
+                         "$\\mathrm{n}$",
+                         "$\\mathrm{\\%}$",
+                         "$\\mathrm{\\%}$",
+                         "$\\mathrm{\\sum \\%}$")
   
     midRule  <- "\\midrule \n"
     cmidRule <- "\\cmidrule{2-6} \n"
