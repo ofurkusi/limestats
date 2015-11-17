@@ -27,7 +27,7 @@ describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="", label=
     latexTable <- xtable(stats, caption = caption,
                          label = label, digits=c(0,rep(digits, ncol(stats)-1),0))
     #hlines <- c(-1,0,1,nrow(table))
-    headerValues <- c("\\textrm{}", rep("\\parbox[b]{0.4in}{\\centering$\\mathrm{\\%}$}", ncol(stats)-1 ), "$\\sum{n}$")
+    headerValues <- c("\\textrm{}", rep("\\parbox[b]{0.4in}{\\centering$\\mathrm{\\%}$}", ncol(stats)-1 ), "$n$")
     headerValues <- paste(gsub(", "," & ",toString(headerValues)), "\\\\")
     align(latexTable) <- c("p{3in}", rep("r", times=ncol(stats)))
     #align(latexTable) <- c("p{3in}", rep(">{\\centering}p{0.4in}", times=ncol(stats)-1),"r")
