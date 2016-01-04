@@ -1,4 +1,6 @@
 import(xtable)
 import(stringr)
 import(Hmisc)
+import(ggplot2)
+import(reshape)
 exportPattern("^[[:alpha:]]+")

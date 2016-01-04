@@ -10,4 +10,6 @@ License: GPL-3
 Imports:
     xtable,
     stringr,
-    Hmisc
+    Hmisc,
+    ggplot2,
+    reshape
