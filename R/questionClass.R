@@ -70,6 +70,17 @@ Question <- setRefClass("Question",
         
         return(questionText)
       },
+      getQuestionLevels = function() {
+        for(i in getQuestionColumns()) {
+          if (exists("myLevels")) {
+            if (all(myLevels != levels(data[,i]))) {
+              stop("Question levels do not match")
+            }
+          }
+          myLevels <- levels(data[,i])
+        }
+        return(myLevels)
+      },
       
       # filter: only show responses where...
       # partition: make separate descriptions for every X of a variable
