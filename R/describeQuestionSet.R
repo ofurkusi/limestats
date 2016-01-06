@@ -1,4 +1,4 @@
-describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="", label="") {
+describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="", label="", display="percentages") {
 
   # Check if the levels match for all the variables
   for (i in 1:ncol(data)) {
@@ -16,23 +16,44 @@ describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="", label=
     }
   }
   
-  stats <- sapply(data, FUN=function(x) {
-    #c(prop.table(table(x))*100, n=length(x))
-    c(prop.table(table(x))*100, n=sum(!is.na(x)))    
-  })
-  stats <- t(stats)
+
+  # Check what type of value to display
+  if (display=="percentages") {
+    stats <- sapply(data, FUN=function(x) {
+      c(prop.table(table(x))*100, n=sum(!is.na(x)))    
+    })
+    displaySign <- "\\mathrm{\\%}"
+  } else if (display=="counts") {
+    stats <- sapply(data, FUN=function(x) {
+      c(table(x), n=sum(!is.na(x)))    
+    })
+    displaySign <- "n"
+    
+  } else {
+    # unsupported display type, e.g. both
+    stop("The value you requested cannot be displayed.")
+  }
   
+  rownames(stats)[nrow(stats)] <- gettext("All answers", domain="R-limestats")
+
+  stats <- t(stats)
+
+
   # Output LaTeX table
   if (latex) {
     latexTable <- xtable(stats, caption = caption,
                          label = label, digits=c(0,rep(digits, ncol(stats)-1),0))
     #hlines <- c(-1,0,1,nrow(table))
-    headerValues <- c("\\textrm{}", rep("\\parbox[b]{0.4in}{\\centering$\\mathrm{\\%}$}", ncol(stats)-1 ), "$n$")
+    headerValues <- c("\\textrm{}",
+                      rep(paste0("\\parbox[b]{0.4in}{\\centering$", displaySign, "$}"), ncol(stats)-1 ),
+                      "\\parbox[b]{0.4in}{\\centering$n$}")
     headerValues <- paste(gsub(", "," & ",toString(headerValues)), "\\\\")
     align(latexTable) <- c("p{3in}", rep("r", times=ncol(stats)))
     #align(latexTable) <- c("p{3in}", rep(">{\\centering}p{0.4in}", times=ncol(stats)-1),"r")
-    names(latexTable) <- paste("\\parbox[b]{0.4in}{\\centering ", names(latexTable),"}", sep="")
-    names(latexTable) <- c(names(latexTable)[1:length(names(latexTable))-1],"")
+    names(latexTable) <- paste("\\parbox[b]{0.4in}{\\vspace{5pt}\\centering ", names(latexTable),"}", sep="")
+    
+    # Use this if you don't want to display "All answers" in the heading
+    #names(latexTable) <- c(names(latexTable)[1:length(names(latexTable))-1],"")
     
     print(latexTable, booktabs = TRUE, floating = TRUE, type = "latex", table.placement="H",
           add.to.row=list(pos=list(0), command=c(headerValues)),
