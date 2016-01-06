@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: limestats 0.1\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-11-05 12:00\n"
-"PO-Revision-Date: 2015-11-05 14:27-0000\n"
+"POT-Creation-Date: 2015-11-30 09:26\n"
+"PO-Revision-Date: 2015-11-30 09:27-0000\n"
 "Last-Translator: Palmar Thorsteinsson <palmar.thorsteinsson@gmail.com>\n"
 "Language-Team: \n"
 "Language: is-IS\n"
@@ -11,6 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+msgid "The crosstab question '"
+msgstr ""
+
+msgid "' was not found"
+msgstr ""
+
+msgid "The crosstab question did not contain any factor levels."
+msgstr ""
 
 msgid "Categorical variables must be defined as factors"
 msgstr ""
@@ -25,10 +34,13 @@ msgid "All answers"
 msgstr "Alls"
 
 msgid "Total"
-msgstr ""
+msgstr "Samtals"
 
 msgid "No answer"
 msgstr "Ekkert valið"
+
+msgid "Option"
+msgstr "Valkostur"
 
 msgid "Free text variables must be defined as character"
 msgstr ""
