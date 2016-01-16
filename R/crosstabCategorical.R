@@ -1,8 +1,23 @@
-crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany", caption="", label="", chisq=TRUE, percentages=TRUE,...) {
+crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany",
+                                caption="", label="", chisq=TRUE, percentages=TRUE,
+                                transpose=FALSE, filter=NULL, ...) {
+  
   txtAll     <- gettext("All", domain="R-limestats") #"Alls"
   txtSum     <- gettext("Total", domain="R-limestats") #"Samtals"
   txtNA      <- gettext("No answer", domain="R-limestats") #"Ekkert valið"
   
+  if (inherits(varx,"Question")) {
+    varx <- varx$getQuestionResponses(filter=filter)
+  }
+  if (inherits(vary,"Question")) {
+    vary <- vary$getQuestionResponses(filter=filter)
+  }
+  if (is.data.frame(varx)) {
+    varx <- varx[,1]
+  }
+  if (is.data.frame(vary)) {
+    vary <- vary[,1]
+  }
   frequencies  <- table(varx, vary, useNA=useNA)
   #chiSqTable <- prop.table(frequencies)
   
@@ -37,6 +52,10 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
   
   # Use translated text for the name of the "sum" row
   rownames(finalTable)[nrow(finalTable)] <- txtSum
+  
+  if (transpose==TRUE) {
+    finalTable <- t(finalTable)
+  }
   
   if (latex) {
     # define number of digits for each column
@@ -75,7 +94,7 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
           tabular.environment="tabular", scalebox=0.9, zero.print = ".", rotate.colnames=FALSE,
           #width="\\textwidth",
           sanitize.text.function = function(x){x}) #hline.after = hlines, 
+  } else {
+    return(finalTable)
   }
-  
-  return(finalTable)
 }
