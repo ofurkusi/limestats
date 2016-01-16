@@ -40,9 +40,13 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
   
   if (latex) {
     tableDigits <- c(0, rep(digits, ncol(finalTable))) # define number of digits for each column
-    finalTable <- finalTable*100 # values are in percentages, multiply by 100
     
     headerValues <- c("\\textrm{}", rep("$\\mathrm{\\%}$", ncol(finalTable) ))
+    # if values are in percentages, multiply by 100
+    if (percentages==TRUE) {
+      finalTable <- finalTable*100
+    }
+    
     headerValues <- paste(gsub(", "," & ",toString(headerValues)), "\\\\ \n")
     topRule <- "\\toprule \n"
     midRule <- "\\midrule \n"
