@@ -1,10 +1,11 @@
 chartify <- function(question, filter=NULL, levels=NULL, wrap.x=NULL,
                      wrap.legend=NULL, legend.title="Category",
-                     xlab="Question", ylab="Percentage of respondents") {
+                     xlab="Question", ylab="Percentage of respondents",
+                     ...) {
 
   # fetch the question data to be charted and if applicable
   # emove data that is not needed
-  chartData <- question$describe(latex=FALSE, filter=filter)
+  chartData <- question$describe(latex=FALSE, filter=filter, ...)
   
   # remove the "n" column, i.e. only leave the proportions
   chartData <- chartData[,seq(from=1,to=ncol(chartData)-1,by=1)]
