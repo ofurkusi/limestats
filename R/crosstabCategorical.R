@@ -39,14 +39,16 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
   rownames(finalTable)[nrow(finalTable)] <- txtSum
   
   if (latex) {
-    tableDigits <- c(0, rep(digits, ncol(finalTable))) # define number of digits for each column
+    # define number of digits for each column
+    tableDigits <- c(0, rep(digits, ncol(finalTable)))
     
-    headerValues <- c("\\textrm{}", rep("$\\mathrm{\\%}$", ncol(finalTable) ))
     # if values are in percentages, multiply by 100
     if (percentages==TRUE) {
       finalTable <- finalTable*100
     }
     
+    headerValues <- c("\\textrm{}",
+                      rep("\\parbox[b]{0.4in}{\\centering$\\mathrm{\\%}$}", ncol(finalTable) ))
     headerValues <- paste(gsub(", "," & ",toString(headerValues)), "\\\\ \n")
     topRule <- "\\toprule \n"
     midRule <- "\\midrule \n"
@@ -64,13 +66,15 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
     }
     
     latexTable <- xtable(finalTable, caption=caption, label=label, digits=tableDigits)
-    align(latexTable) <- c("X", rep("r", times=ncol(finalTable)))
+    align(latexTable) <- c("l", rep("r", times=ncol(finalTable)))
+    names(latexTable) <- paste("\\parbox[b]{0.4in}{\\vspace{5pt}\\centering ", names(latexTable),"}", sep="")    
     print(latexTable, floating = TRUE, type = "latex",
           table.placement="H", booktabs = TRUE, hline.after=NULL,
           add.to.row=list(pos=list(-1, 0, 0, nrow(finalTable)-1,  nrow(finalTable), nrow(finalTable)),
                           command=c(topRule, headerValues, midRule, midRule, bottomRule, chiSqRow)),
-          tabular.environment="tabularx", scalebox=0.9, zero.print = ".", rotate.colnames=FALSE,
-          width="\\textwidth", sanitize.text.function = function(x){x}) #hline.after = hlines, 
+          tabular.environment="tabular", scalebox=0.9, zero.print = ".", rotate.colnames=FALSE,
+          #width="\\textwidth",
+          sanitize.text.function = function(x){x}) #hline.after = hlines, 
   }
   
   return(finalTable)
