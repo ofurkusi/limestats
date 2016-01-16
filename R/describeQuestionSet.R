@@ -1,4 +1,6 @@
-describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="", label="", display="percentages") {
+describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="",
+                                label="", display="percentages",
+                                ignore.levels=NULL) {
 
   # Check if the levels match for all the variables
   for (i in 1:ncol(data)) {
@@ -15,7 +17,12 @@ describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="", label=
       # ERROR! Mismatch in levels!
     }
   }
-  
+
+  # If the user specifies a vector of levels to ignore, then remove them from
+  # the data
+  if (!is.null(ignore.levels)) {
+    data <- remove_levels(data, ignore.levels)
+  }
 
   # Check what type of value to display
   if (display=="percentages") {
@@ -33,7 +40,7 @@ describeQuestionSet <- function(data, digits = 0, latex=TRUE, caption="", label=
     # unsupported display type, e.g. both
     stop("The value you requested cannot be displayed.")
   }
-  
+
   rownames(stats)[nrow(stats)] <- gettext("All answers", domain="R-limestats")
 
   stats <- t(stats)

@@ -1,5 +1,6 @@
 crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany",
                                 caption="", label="", chisq=TRUE, percentages=TRUE,
+                                ignore.levels.x=NULL, ignore.levels.y=NULL,
                                 transpose=FALSE, filter=NULL, ...) {
   
   txtAll     <- gettext("All", domain="R-limestats") #"Alls"
@@ -18,6 +19,16 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
   if (is.data.frame(vary)) {
     vary <- vary[,1]
   }
+  
+  # If the user specifies a vector of levels to ignore, then remove them from
+  # the data
+  if (!is.null(ignore.levels.x)) {
+    varx <- remove_levels(varx, ignore.levels.x)
+  }
+  if (!is.null(ignore.levels.y)) {
+    vary <- remove_levels(vary, ignore.levels.y)
+  }  
+  
   frequencies  <- table(varx, vary, useNA=useNA)
   #chiSqTable <- prop.table(frequencies)
   

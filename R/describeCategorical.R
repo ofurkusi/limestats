@@ -1,10 +1,17 @@
 describeCategorical <- function(data, digits = 1, latex=TRUE, caption="", label="",
-                                cumulative=TRUE, validonly=FALSE, showNA=TRUE) {
+                                cumulative=TRUE, validonly=FALSE, showNA=TRUE,
+                                ignore.levels=NULL) {
 
+  # If the user specifies a vector of levels to ignore, then remove them
+  if (!is.null(ignore.levels)) {
+    data <- remove_levels(data, ignore.levels)
+  }
+  
   if (is.data.frame(data)) {
     data <- data[,1]
   }
   
+
   # Check if this variable is a factor
   if (!is.factor(data)) {
     stop("Categorical variables must be defined as factors")
