@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: limestats 0.1\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-11-30 09:26\n"
+"POT-Creation-Date: 2016-01-14 23:05\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,6 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+
+msgid "The number of datasets, questions and column names are not equal"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "No answer"
+msgstr ""
 
 msgid "The crosstab question '"
 msgstr ""
@@ -32,12 +44,6 @@ msgstr ""
 msgid "All answers"
 msgstr ""
 
-msgid "Total"
-msgstr ""
-
-msgid "No answer"
-msgstr ""
-
 msgid "Option"
 msgstr ""
 
@@ -48,4 +54,10 @@ msgid "Data must be numeric in order to be described as nominal. Invalid columns
 msgstr ""
 
 msgid ","
+msgstr ""
+
+msgid "The value you requested cannot be displayed."
+msgstr ""
+
+msgid "Question levels do not match"
 msgstr ""

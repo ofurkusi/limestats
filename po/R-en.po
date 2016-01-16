@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: limestats 0.1\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-11-05 12:00\n"
-"PO-Revision-Date: 2015-11-05 12:01-0000\n"
+"POT-Creation-Date: 2016-01-14 23:05\n"
+"PO-Revision-Date: 2016-01-14 23:11-0000\n"
 "Last-Translator: Palmar Thorsteinsson <palmar.thorsteinsson@gmail.com>\n"
 "Language-Team: \n"
 "Language: en-EN\n"
@@ -11,6 +11,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+msgid "The number of datasets, questions and column names are not equal"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "No answer"
+msgstr ""
+
+msgid "The crosstab question '"
+msgstr ""
+
+msgid "' was not found"
+msgstr ""
+
+msgid "The crosstab question did not contain any factor levels."
+msgstr ""
 
 msgid "Categorical variables must be defined as factors"
 msgstr ""
@@ -24,10 +45,7 @@ msgstr ""
 msgid "All answers"
 msgstr ""
 
-msgid "Total"
-msgstr ""
-
-msgid "No answer"
+msgid "Option"
 msgstr ""
 
 msgid "Free text variables must be defined as character"
@@ -38,4 +56,10 @@ msgid ""
 msgstr ""
 
 msgid ","
+msgstr ""
+
+msgid "The value you requested cannot be displayed."
+msgstr ""
+
+msgid "Question levels do not match"
 msgstr ""

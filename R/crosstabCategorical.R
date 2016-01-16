@@ -1,7 +1,7 @@
 crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany", caption="", label="", chisq=TRUE, percentages=TRUE,...) {
-  txtAll     <- "Alls"
-  txtSum     <- "Samtals"
-  txtNA      <- "Ekkert valið"
+  txtAll     <- gettext("All", domain="R-limestats") #"Alls"
+  txtSum     <- gettext("Total", domain="R-limestats") #"Samtals"
+  txtNA      <- gettext("No answer", domain="R-limestats") #"Ekkert valið"
   
   frequencies  <- table(varx, vary, useNA=useNA)
   #chiSqTable <- prop.table(frequencies)
@@ -25,7 +25,7 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
   #sum.row <- margin.table(proportions, 2)
   #finalTable <- rbind(proportions, sum.row)
   sum.row    <- margin.table(finalTable, 2)
-  finalTable <- rbind(finalTable, Samtals=sum.row)
+  finalTable <- rbind(finalTable, Total=sum.row)
   
   # Name the NA columns and rows something else than "NA"
   rownames(finalTable)[is.na(rownames(finalTable))] <- txtNA
@@ -34,6 +34,9 @@ crosstabCategorical <- function(varx, vary, digits = 1, latex=TRUE, useNA="ifany
   if (colnames(finalTable)[ncol(finalTable)] == "") {
     colnames(finalTable)[ncol(finalTable)] <- txtAll
   }
+  
+  # Use translated text for the name of the "sum" row
+  rownames(finalTable)[nrow(finalTable)] <- txtSum
   
   if (latex) {
     tableDigits <- c(0, rep(digits, ncol(finalTable))) # define number of digits for each column

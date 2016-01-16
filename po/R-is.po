@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: limestats 0.1\n"
 "Report-Msgid-Bugs-To: bugs.r-project.org\n"
-"POT-Creation-Date: 2015-11-30 09:26\n"
-"PO-Revision-Date: 2015-11-30 09:27-0000\n"
+"POT-Creation-Date: 2016-01-14 23:05\n"
+"PO-Revision-Date: 2016-01-14 23:22-0000\n"
 "Last-Translator: Palmar Thorsteinsson <palmar.thorsteinsson@gmail.com>\n"
 "Language-Team: \n"
 "Language: is-IS\n"
@@ -11,6 +11,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
+
+msgid "The number of datasets, questions and column names are not equal"
+msgstr ""
+
+msgid "All"
+msgstr "Alls"
+
+msgid "Total"
+msgstr "Samtals"
+
+msgid "No answer"
+msgstr "Ekkert valið"
 
 msgid "The crosstab question '"
 msgstr ""
@@ -33,12 +45,6 @@ msgstr "Ógild svör"
 msgid "All answers"
 msgstr "Alls"
 
-msgid "Total"
-msgstr "Samtals"
-
-msgid "No answer"
-msgstr "Ekkert valið"
-
 msgid "Option"
 msgstr "Valkostur"
 
@@ -50,4 +56,10 @@ msgid ""
 msgstr ""
 
 msgid ","
+msgstr ""
+
+msgid "The value you requested cannot be displayed."
+msgstr ""
+
+msgid "Question levels do not match"
 msgstr ""
